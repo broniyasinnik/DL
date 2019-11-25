@@ -96,7 +96,7 @@ def train_fc_model(train_loader, test_loader):
     criterion = nn.MSELoss()
     losses_train = []
     losses_test = []
-    epochs =100
+    epochs =150
 
     for i in range(epochs):
         test_running_loss, running_loss = 0., 0.
@@ -127,13 +127,17 @@ def train_fc_model(train_loader, test_loader):
     print(loss_final)
 
     # Plotting loss for training and test
-    pylab.plot(range(epochs), losses_train, label='train')
-    pylab.plot(range(epochs), losses_test, label='test')
-
-    pylab.legend(loc='upper left')
-    pylab.xlabel('epochs')
-    pylab.ylabel('Loss')
-
+    plt.plot(range(epochs), losses_train, label='train')
+    plt.legend(loc='upper left')
+    plt.xlabel('epochs')
+    plt.ylabel('Loss')
+    plt.savefig(r'/Users/omerlandau/Desktop/DL-Wolf/homeworks/EX1/Q3/fc_train_loss_3_3.svg')
+    plt.clf()
+    plt2 = plt.plot(range(epochs), losses_test, label='test')
+    plt.legend(loc='upper left')
+    plt.xlabel('epochs')
+    plt.ylabel('Loss')
+    plt.savefig(r'/Users/omerlandau/Desktop/DL-Wolf/homeworks/EX1/Q3/fc_test_loss_3_3.svg')
 
 # defining conv model for 3.4
 
@@ -171,7 +175,7 @@ def train_conv_model(train_loader, test_loader):
     model = Model().to(device)
     criterion = nn.MSELoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=0.0001)
-    epochs = 50
+    epochs = 100
 
     losses_train = []
     losses_test = []
@@ -205,12 +209,18 @@ def train_conv_model(train_loader, test_loader):
     print(loss_final)
 
     # Plotting loss for training and test
-    pylab.plot(range(epochs), losses_train, label='train')
-    pylab.plot(range(epochs), losses_test, label='test')
+    plt.plot(range(epochs), losses_train, label='train')
+    plt.legend(loc='upper left')
+    plt.xlabel('epochs')
+    plt.ylabel('Loss')
+    plt.savefig(r'/Users/omerlandau/Desktop/DL-Wolf/homeworks/EX1/Q3/conv_train_loss_3_4.svg')
+    plt.clf()
+    plt2 = plt.plot(range(epochs), losses_test, label='test')
+    plt.legend(loc='upper left')
+    plt.xlabel('epochs')
+    plt.ylabel('Loss')
+    plt.savefig(r'/Users/omerlandau/Desktop/DL-Wolf/homeworks/EX1/Q3/conv_test_loss_3_4.svg')
 
-    pylab.legend(loc='upper left')
-    pylab.xlabel('epochs')
-    pylab.ylabel('Loss')
 
 def main():
 
